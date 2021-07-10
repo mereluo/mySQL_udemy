@@ -2,6 +2,8 @@
 
 A database is just a bunch of tables
 
+slide link: <http://webdev.slides.com/coltsteele/mysql-97-98#/68/0/0>
+
 ## Section 3: Create/Drop Table
 
 ### 3.1 Create Table
