@@ -38,26 +38,11 @@ How to check your table:
 DROP TABLE tablename;
 </pre>
 
-### 3.3 Worked Out Example
-
-<pre>
-SELECT database() # select the intended database
-CREATE TABLE pastries
-(
-    name VARCHAR(50),
-    quantity INT
-);
-SHOW TABLES
-DESC pastries
-DROP TABLE pastries
-</pre>
-
 ## Section 4: Insert values
 
 ### 4.1 basic syntax
 
 The "formula":
-
 <pre>INSERT INTO table_name(column_name) VALUES (data);
 </pre>
 
@@ -77,9 +62,7 @@ VALUES      (value, value),
             (value, value);
 </pre>
 
-If you're wondering how to insert a string (VARCHAR) value that contains quotations, then here's how.
-
-You can do it a couple of ways:
+If you're wondering how to insert a string (VARCHAR) value that contains **quotations**, then here's how.
 
 * Escape the quotes with a backslash: "This text has \\"quotes\\" in it" or 'This text has \\'quotes\\' in it'
 
@@ -91,18 +74,12 @@ Try Inserting a cat with a super long name:
 
 <pre>INSERT INTO cats(name, age)
 VALUES('This is some text blah blah blah blah blah text text text something about cats lalalalal meowwwwwwwwwww', 10);
-</pre>
-Then view the warning:
-
-<pre>SHOW WARNINGS;</pre>
+SHOW WARNINGS;</pre>
 
 Try inserting a cat with incorrect data types:
 
-<pre>INSERT INTO cats(name, age) VALUES('Lima', 'dsfasdfdas');</pre>
-
-Then view the warning:
-
-<pre>SHOW WARNINGS;</pre>
+<pre>INSERT INTO cats(name, age) VALUES('Lima', 'dsfasdfdas');
+SHOW WARNINGS;</pre>
 
 If it is an error:
 <pre> set sql_mode='';</pre>
@@ -111,17 +88,17 @@ If it is an error:
 
 **Null: The value is unknown.**
 
-Try inserting a cat without an age:
+(1) Try inserting an ageless cat:
 
 <pre>INSERT INTO cats(name) VALUES('Alabama');
 SELECT * FROM cats;
 </pre>
 
-Try inserting a nameless and ageless cat:
+(2) Try inserting a nameless and ageless cat:
 
 <pre>INSERT INTO cats() VALUES();</pre>
 
-Define a new **cats2** table with **NOT NULL** constraints:
+(3) Define a new **cats2** table with **NOT NULL** constraints:
 
 <pre>CREATE TABLE cats2
   (
@@ -130,23 +107,21 @@ Define a new **cats2** table with **NOT NULL** constraints:
   );
 DESC cats2;</pre>
 
-Now try inserting an ageless cat:
+(4) Now try inserting an ageless cat:
 
 <pre>INSERT INTO cats2(name) VALUES('Texas');</pre>
-
-View the new warnings:
 
 <pre>SHOW WARNINGS;
 SELECT * FROM cats2;</pre>
 
-Do the same for a nameless cat:
+(5) Do the same for a nameless cat:
 
 <pre>INSERT INTO cats2(age) VALUES(7);
 SHOW WARNINGS;</pre>
 
 ### 4.4 Setting Default Values
 
-Define a table with a DEFAULT name specified:
+**Define a table with a DEFAULT name specified:**
 
 <pre>CREATE TABLE cats3
 (
@@ -155,16 +130,7 @@ Define a table with a DEFAULT name specified:
 )
 </pre>
 
-Notice the change when you describe the table:
-<pre>DESC cats3;</pre>
-
-Insert a cat without a name:
-<pre>INSERT INTO cats3(age) VALUES(13);</pre>
-
-Or a nameless, ageless cat:
-<pre>INSERT INTO cats3() VALUES();</pre>
-
-Combine NOT NULL and DEFAULT:
+**Combine NOT NULL and DEFAULT:**
 <pre>CREATE TABLE cats4
 (
     name VARCHAR(20) NOT NULL DEFAULT "unnamed",
@@ -172,7 +138,7 @@ Combine NOT NULL and DEFAULT:
 )
 </pre>
 
-Notice The Difference:
+**Notice The Difference:**
 
 <pre>INSERT INTO cats() VALUES();
 SELECT * FROM cats;
@@ -184,4 +150,33 @@ INSERT INTO cats3(name, age) VALUES('Montana', NULL);
 SELECT * FROM cats3;
 
 INSERT INTO cats4(name, age) VALUES('Cali', NULL);
+</pre>
+
+### 4.5 Primary key
+
+<pre>
+CREATE TABLE unique_cats (cat_id INT NOT NULL
+                      ,name VARCHAR(100)
+                      ,age INT
+                      ,PRIMARY KEY (cat_id));
+DESC unique_cats;
+
+INSERT INTO unique_cats(cat_id, name, age) VALUES(1, "Fred", 23);
+SELECT * FROM unique_cats;
+
+INSERT INTO unique_cats(cat_id, name, age) VALUES(2, "Fred", 23);
+SELECT * FROM unique_cats;
+</pre>
+
+**Auto increment for primary key:**
+
+<pre>
+CREATE TABLE unique_cats2 (cat_id INT NOT NULL AUTO_INCREMENT
+                      ,name VARCHAR(100)
+                      ,age INT
+                      ,PRIMARY KEY (cat_id));
+
+INSERT INTO unique_cats2(name, age) VALUES("Fred", 23);
+INSERT INTO unique_cats2(name, age) VALUES("Sally", 3);
+SELECT * FROM unique_cats2;
 </pre>
