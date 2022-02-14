@@ -8,3 +8,6 @@ Exit sql: `exit`
 `SHOW DATABASES`
 `USE Database`
 `SHOW TABLES`
+
+Very good resource for understanding basic concepts: 
+https://dataschool.com/how-to-teach-people-sql/introduction/
