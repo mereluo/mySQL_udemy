@@ -16,6 +16,8 @@ Use this for faker package: https://github.com/faker-js/faker
 
 Mysql package doc: https://github.com/mysqljs/mysql
 
+Express for web application: https://expressjs.com/
+
 # Setting up Node JS with Goorm.io
 
 - If you followed the [signup and setup instructions](https://gist.github.com/nax3t/2773378c4d1bada8d66d12f4d5210248) from [lecture 12](https://www.udemy.com/course/the-ultimate-mysql-bootcamp-go-from-sql-beginner-to-expert/learn/lecture/7061932#overview), then you should already have Node JS installed in your Goorm.io container. If the following steps do not work for you, then please revisit the instructions linked above and use them to create a new Node JS container.
