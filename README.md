@@ -2,6 +2,8 @@
 
 Started from July 9th 2021
 
+Go to your IDE dashboard, [here](https://ide.goorm.io/my/dashboard), this is where you will create and manage your containers. Please bookmark this page, you will use it often.
+
 Command to start the server: `mysql-ctl start` `mysql-ctl cli`
 Exit sql: `exit`
 
