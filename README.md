@@ -31,3 +31,14 @@ Express for web application: https://expressjs.com/
 		- If your terminal path reads anything other than `/workspace/your-container-name` then be sure to change directories with the `cd /workspace/your-container-name` command. **Note:** *your-container-name* will be whatever you named your container, e.g., I named mine *mysql*
 	- Run the following command: `node app.js`. The terminal should output **Hello, world!**
 	- If you got the proper output from the terminal then you have successfully created and run a Node JS file.
+
+# Extending the final project
+
+- Use Faker pacakge to generate random pet and owner information
+- Create two tables:
+	- owner: id, firstname, gender, jobtitle, city, petid
+	- pet: cat types, ownerid, age
+- Purposes (visitors can see):
+	- for this gender, jobtitle, city, what is 5 most common cat types
+	- for this cat types, what is the most common gender, jobtitle, city
+	- users can type in their cats and personal information into the website
